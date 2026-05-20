@@ -1,0 +1,11 @@
+name: AxFlyBoots
+description: $description
+prefix: AxFlyBoots
+version: '${version}'
+
+main: de.jaunikapauni.axflyboots.AxFlyBoots
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ JauniKapauni ]
+website: https://github.com/JauniKapauni
