@@ -1,6 +1,9 @@
 # AxFlyBoots
 > Minecraft plugin to enable player to fly when wearing boots
 ---
+## Requirements
+- Minecraft Paper 26.1.2 Server
+---
 ## Installation
 1. Download the latest release
 2. Put the `.jar` into the `/plugins` folder of every server to be synchronized
