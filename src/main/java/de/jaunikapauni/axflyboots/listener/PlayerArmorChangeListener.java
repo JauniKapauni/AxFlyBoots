@@ -11,6 +11,10 @@ public class PlayerArmorChangeListener implements Listener {
     @EventHandler
     public void onArmorChange(PlayerArmorChangeEvent e){
         Player p = e.getPlayer();
+        if(!p.hasPermission("axflyboots.use")){
+            p.sendMessage("You don't have the permission! [axflyboots.use]");
+            return;
+        }
         ItemStack newBoots = e.getNewItem();
         ItemStack oldBoots = e.getOldItem();
         if(newBoots.getType().name().contains("BOOTS")){
