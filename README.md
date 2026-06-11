@@ -9,6 +9,8 @@
 2. Put the `.jar` into the `/plugins` folder of every server to be synchronized
 3. Start the server
 ---
+## Commands & Permissions
+- `Use flyboots` - `axflyboots.use`
 ## Support
 Discord: [AxForge](https://discord.gg/rYSxV4daS8)
 ---
