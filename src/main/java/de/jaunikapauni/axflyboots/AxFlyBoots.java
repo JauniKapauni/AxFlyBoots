@@ -29,13 +29,13 @@ public final class AxFlyBoots extends JavaPlugin {
                 }
                 double balance =  economyAPI.getBalance(p.getUniqueId());
                 if(balance < 20){
-                    p.sendMessage(ChatColor.RED + "Du hast nicht Geld zum Fliegen!");
+                    p.sendActionBar(ChatColor.RED + "You don't have enough money to fly!");
                     p.setFlying(false);
                     p.setAllowFlight(false);
                     continue;
                 }
                 economyAPI.withdraw(p.getUniqueId(), 20);
-                p.sendMessage(ChatColor.GREEN + "20€ für Fliegen!");
+                p.sendActionBar(ChatColor.RED + "[AxFlyBoots] 20€");
         }
         }, 0L, 20L);
         getLogger().info("");
