@@ -1,6 +1,7 @@
 package de.jaunikapauni.axflyboots.listener;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,6 +12,9 @@ public class PlayerArmorChangeListener implements Listener {
     @EventHandler
     public void onArmorChange(PlayerArmorChangeEvent e){
         Player p = e.getPlayer();
+        if(p.getGameMode() == GameMode.CREATIVE){
+            return;
+        }
         if(!p.hasPermission("axflyboots.use")){
             p.sendMessage("You don't have the permission! [axflyboots.use]");
             return;

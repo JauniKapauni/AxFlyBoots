@@ -5,6 +5,7 @@ import de.jaunikapauni.axeconomy.api.EconomyAPI;
 import de.jaunikapauni.axflyboots.listener.PlayerArmorChangeListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +25,9 @@ public final class AxFlyBoots extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerArmorChangeListener(), this);
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for(Player p : Bukkit.getOnlinePlayers()){
+                if(p.getGameMode() == GameMode.CREATIVE){
+                    continue;
+                }
                 if(!p.isFlying()){
                     continue;
                 }
