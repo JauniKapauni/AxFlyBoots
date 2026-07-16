@@ -19,9 +19,12 @@ public final class AxFlyBoots extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         AxEconomy axEconomy = (AxEconomy) Bukkit.getPluginManager().getPlugin("AxEconomy");
-        if(axEconomy != null){
-            economyAPI = axEconomy.getEconomyAPI();
+        if(axEconomy == null){
+            getLogger().severe("AxEconomy not found!");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
         }
+        economyAPI = axEconomy.getEconomyAPI();
         getServer().getPluginManager().registerEvents(new PlayerArmorChangeListener(), this);
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for(Player p : Bukkit.getOnlinePlayers()){
