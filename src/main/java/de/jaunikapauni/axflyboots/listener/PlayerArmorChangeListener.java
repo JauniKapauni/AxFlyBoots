@@ -21,17 +21,21 @@ public class PlayerArmorChangeListener implements Listener {
         }
         ItemStack newBoots = e.getNewItem();
         ItemStack oldBoots = e.getOldItem();
-        if(newBoots.getType().name().contains("BOOTS")){
+        if(isBoots(newBoots)){
             if(!p.getAllowFlight()){
                 p.setAllowFlight(true);
                 p.sendMessage("Fly activated!");
             }
         } else {
-            if(oldBoots.getType().name().contains("BOOTS")){
+            if(isBoots(oldBoots)){
                 p.setAllowFlight(false);
                 p.setFlying(false);
                 p.sendMessage("Fly deactived!");
             }
         }
+    }
+
+    public boolean isBoots(ItemStack itemStack){
+        return itemStack != null && itemStack.getType().name().endsWith("_BOOTS");
     }
 }
