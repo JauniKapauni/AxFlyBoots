@@ -37,7 +37,7 @@ public class PlayerArmorChangeListener implements Listener {
             if(isBoots(oldBoots)){
                 p.setAllowFlight(false);
                 p.setFlying(false);
-                p.sendMessage("Fly deactived!");
+                p.sendMessage("Fly deactivated!");
                 reference.getFlyingPlayers().remove(p.getUniqueId());
             }
         }
