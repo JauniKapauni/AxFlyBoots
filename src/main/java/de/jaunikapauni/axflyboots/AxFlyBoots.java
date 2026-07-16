@@ -43,6 +43,9 @@ public final class AxFlyBoots extends JavaPlugin {
                 if(!p.isFlying()){
                     continue;
                 }
+                if(p.getGameMode() == GameMode.CREATIVE){
+                    continue;
+                }
                 double balance =  economyAPI.getBalance(p.getUniqueId());
                 if(balance < 20){
                     p.sendActionBar(ChatColor.RED + "You don't have enough money to fly!");
