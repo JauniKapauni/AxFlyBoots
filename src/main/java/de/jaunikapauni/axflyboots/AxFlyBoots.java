@@ -37,6 +37,10 @@ public final class AxFlyBoots extends JavaPlugin {
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for(UUID uuid : new HashSet<>(flyingPlayers)){
                 Player p = Bukkit.getPlayer(uuid);
+                if(p == null){
+                    flyingPlayers.remove(uuid);
+                    continue;
+                }
                 if(p.getGameMode() == GameMode.CREATIVE){
                     continue;
                 }
