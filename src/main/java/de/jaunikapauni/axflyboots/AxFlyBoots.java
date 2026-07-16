@@ -9,10 +9,18 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public final class AxFlyBoots extends JavaPlugin {
     EconomyAPI economyAPI;
     public EconomyAPI getEconomyAPI(){
         return economyAPI;
+    }
+    Set<UUID> flyingPlayers = new HashSet<>();
+    public Set<UUID> getFlyingPlayers(){
+        return flyingPlayers;
     }
 
     @Override
@@ -25,9 +33,10 @@ public final class AxFlyBoots extends JavaPlugin {
             return;
         }
         economyAPI = axEconomy.getEconomyAPI();
-        getServer().getPluginManager().registerEvents(new PlayerArmorChangeListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerArmorChangeListener(this), this);
         Bukkit.getScheduler().runTaskTimer(this, () -> {
-            for(Player p : Bukkit.getOnlinePlayers()){
+            for(UUID uuid : flyingPlayers){
+                Player p = Bukkit.getPlayer(uuid);
                 if(p.getGameMode() == GameMode.CREATIVE){
                     continue;
                 }
