@@ -35,7 +35,7 @@ public final class AxFlyBoots extends JavaPlugin {
         economyAPI = axEconomy.getEconomyAPI();
         getServer().getPluginManager().registerEvents(new PlayerArmorChangeListener(this), this);
         Bukkit.getScheduler().runTaskTimer(this, () -> {
-            for(UUID uuid : flyingPlayers){
+            for(UUID uuid : new HashSet<>(flyingPlayers)){
                 Player p = Bukkit.getPlayer(uuid);
                 if(p.getGameMode() == GameMode.CREATIVE){
                     continue;
@@ -51,6 +51,7 @@ public final class AxFlyBoots extends JavaPlugin {
                     p.sendActionBar(ChatColor.RED + "You don't have enough money to fly!");
                     p.setFlying(false);
                     p.setAllowFlight(false);
+                    flyingPlayers.remove(p.getUniqueId());
                     continue;
                 }
                 economyAPI.withdraw(p.getUniqueId(), 20);
