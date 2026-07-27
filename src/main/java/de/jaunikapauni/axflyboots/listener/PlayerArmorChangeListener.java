@@ -24,6 +24,9 @@ public class PlayerArmorChangeListener implements Listener {
         if(!p.hasPermission("axflyboots.use")){
             return;
         }
+        if(!reference.isFlyBootsEnabled(p.getUniqueId())){
+            return;
+        }
         ItemStack newBoots = e.getNewItem();
         ItemStack oldBoots = e.getOldItem();
         if(isBoots(newBoots)){

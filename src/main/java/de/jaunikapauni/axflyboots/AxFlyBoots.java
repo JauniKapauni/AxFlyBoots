@@ -2,6 +2,7 @@ package de.jaunikapauni.axflyboots;
 
 import de.jaunikapauni.axeconomy.AxEconomy;
 import de.jaunikapauni.axeconomy.api.EconomyAPI;
+import de.jaunikapauni.axflyboots.command.FlyBootsCommand;
 import de.jaunikapauni.axflyboots.listener.PlayerArmorChangeListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -21,6 +22,20 @@ public final class AxFlyBoots extends JavaPlugin {
     Set<UUID> flyingPlayers = new HashSet<>();
     public Set<UUID> getFlyingPlayers(){
         return flyingPlayers;
+    }
+    Set<UUID> disabledPlayers = new HashSet<>();
+    public Set<UUID> getDisabledPlayers(){
+        return disabledPlayers;
+    }
+    public boolean isFlyBootsEnabled(UUID uuid){
+        return !disabledPlayers.contains(uuid);
+    }
+    public void toggleFlyBoots(UUID uuid){
+        if(disabledPlayers.contains(uuid)){
+            disabledPlayers.remove(uuid);
+        } else {
+            disabledPlayers.add(uuid);
+        }
     }
 
     @Override
@@ -59,6 +74,7 @@ public final class AxFlyBoots extends JavaPlugin {
                 p.sendActionBar(ChatColor.RED + "[AxFlyBoots] 20€");
         }
         }, 0L, 20L);
+        getCommand("flyboots").setExecutor(new FlyBootsCommand(this));
         getLogger().info("");
         getLogger().info("----------------------------------------");
         getLogger().info("Name: " + getName());

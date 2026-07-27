@@ -12,3 +12,6 @@ website: https://github.com/JauniKapauni
 
 depend:
   - AxEconomy
+
+commands:
+  flyboots:
