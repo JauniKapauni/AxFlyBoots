@@ -20,6 +20,10 @@ public class FlyBootsCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
+        if (!p.hasPermission("axflyboots.flyboots")) {
+            p.sendMessage("You don't have the permission! [axflyboots.flyboots]");
+            return true;
+        }
         reference.toggleFlyBoots(p.getUniqueId());
         if(reference.isFlyBootsEnabled(p.getUniqueId())){
             p.sendMessage("Fly boots enabled!");
